@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @memo %>
+
+<div>
+  <%= link_to (t 'memo.edit'), edit_memo_path(@memo, locale: I18n.locale) %> |
+  <%= link_to (t 'memo.back_to_list'), memos_path(locale: I18n.locale) %>
+
+  <%= button_to (t 'memo.destroy'), memo_path(@memo, locale: I18n.locale), method: :delete %>
+</div>

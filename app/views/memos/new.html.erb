@@ -1,0 +1,11 @@
+<% content_for :title, "New memo" %>
+
+<h1>New memo</h1>
+
+<%= render "form", memo: @memo %>
+
+<br>
+
+<div>
+  <%= link_to (t 'memo.back_to_list'), memos_path(locale: I18n.locale) %>
+</div>

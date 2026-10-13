@@ -1,0 +1,23 @@
+<%= form_with(model: memo, url: memo.persisted? ? memo_path(memo, locale: I18n.locale) : memos_path(locale: I18n.locale)) do |form| %>
+  <% if memo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h2>
+
+      <ul>
+        <% memo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
