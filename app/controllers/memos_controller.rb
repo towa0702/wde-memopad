@@ -5,10 +5,10 @@ class MemosController < ApplicationController
   # GET /memos or /memos.json
   def index
     if current_user && current_user.handle_name.blank?
-      session[:back_to_home] = true  
+      session[:back_to_home] = true
       redirect_to edit_user_path(current_user)
     else
-      @memos = Memo.all
+      @memos = current_user.memos
     end
   end
 
@@ -18,7 +18,7 @@ class MemosController < ApplicationController
 
   # GET /memos/new
   def new
-    @memo = Memo.new
+    @memo = current_user.memos.build
   end
 
   # GET /memos/1/edit
@@ -27,7 +27,7 @@ class MemosController < ApplicationController
 
   # POST /memos or /memos.json
   def create
-    @memo = Memo.new(memo_params)
+    @memo = current_user.memos.build(memo_params)
 
     respond_to do |format|
       if @memo.save
@@ -78,7 +78,7 @@ class MemosController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_memo
-      @memo = Memo.find(params.expect(:id))
+      @memo = current_user.memos.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
