@@ -65,3 +65,4 @@ group :test do
   gem "selenium-webdriver"
 end
 gem "json", "2.21.2"
+gem "devise"

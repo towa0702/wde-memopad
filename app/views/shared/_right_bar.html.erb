@@ -3,3 +3,10 @@ Change Password<br />
 My Avatar<br />
 <hr>
 Google Ads Here
+<% if current_user %>
+  Hello, <%= current_user.email %><br />
+  <%= link_to 'Sign out', destroy_user_session_path,
+      data: { turbo_method: :delete } %><br />
+  <%= link_to 'Edit your info', edit_user_path(current_user) %><br />
+  <%= link_to 'Change Password', edit_user_registration_path %>
+<% end %>

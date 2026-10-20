@@ -1,9 +1,15 @@
 class MemosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_memo, only: %i[ show edit update destroy ]
 
   # GET /memos or /memos.json
   def index
-    @memos = Memo.all
+    if current_user && current_user.handle_name.blank?
+      session[:back_to_home] = true  
+      redirect_to edit_user_path(current_user)
+    else
+      @memos = Memo.all
+    end
   end
 
   # GET /memos/1 or /memos/1.json
