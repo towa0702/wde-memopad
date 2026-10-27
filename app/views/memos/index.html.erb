@@ -5,12 +5,28 @@
 <h1><%= t('memo.title') %></h1>
 
 <div id="memos">
-  <% @memos.each do |memo| %>
-    <%= render memo %>
-    <p>
-      <%= link_to (t 'memo.show'), memo_path(memo, locale: I18n.locale) %>
-    </p>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Content</th>
+        <th>Category</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @memos.each do |memo| %>
+        <tr>
+          <td><%= memo.content %></td>
+          <td><%= memo.category.name if memo.category.present? %></td>
+          <td><%= link_to t("memo.show"), memo %></td>
+          <td>
+            <%= link_to t("memo.destroy"), memo,
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
 <%= link_to (t 'memo.new'), new_memo_path(locale: I18n.locale) %>
