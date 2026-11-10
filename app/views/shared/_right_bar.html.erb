@@ -10,3 +10,23 @@ Google Ads Here
   <%= link_to 'Edit your info', edit_user_path(current_user) %><br />
   <%= link_to 'Change Password', edit_user_registration_path %>
 <% end %>
+
+<br />
+<br />
+<button id="help_btn" class="btn btn-warning">HELP</button>
+<div id="messages"></div>
+<br />
+<button type="button"
+        class="btn btn-lg btn-danger"
+        data-bs-toggle="popover"
+        data-bs-title="Popover title"
+        data-bs-content="Hello, who are you?">
+  Click: popover
+</button>
+
+<button type="button" class="btn btn-lg btn-success" id="mouse_over"
+        data-bs-toggle="popover"
+        data-bs-title="Mouse Over Now"
+        data-bs-content="I do nothing.">
+  Mouse: hover
+</button>

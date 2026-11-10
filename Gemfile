@@ -70,3 +70,6 @@ end
 
 gem "json", "2.21.2"
 gem "devise"
+
+gem "bootstrap"
+gem "dartsass-rails"

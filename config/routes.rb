@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'help', to: 'help#index'
   resources :categories
   devise_for :users
   get 'memos', to: 'memos#index', as: :user_root

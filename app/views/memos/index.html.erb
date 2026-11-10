@@ -5,7 +5,7 @@
 <h1><%= t('memo.title') %></h1>
 
 <div id="memos">
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>Content</th>
@@ -29,4 +29,4 @@
   </table>
 </div>
 
-<%= link_to (t 'memo.new'), new_memo_path(locale: I18n.locale) %>
+<%= link_to t('memo.new'), new_memo_path(locale: I18n.locale), class: "btn btn-info" %>
